@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     await api.post("/auth/register", { username, email, password });
     // directly login after register
     await login(email, password);
-    return res.data;
+    
   };
 
   const logout = () => {
