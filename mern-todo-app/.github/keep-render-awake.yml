@@ -1,0 +1,14 @@
+name: Keep Render Backend Awake
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # runs every 5 minutes
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl backend health endpoint
+        run: |
+          curl -fsS --retry 3 https://mern-to-do-application-talha.onrender.com/health || exit 0
